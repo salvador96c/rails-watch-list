@@ -1,3 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <h1> <%= @list.name %> </h1>
 </div>
+
+<%= link_to "+ Add Movie", new_list_bookmark_path(@list), class: "btn btn-flat" %>
+
+ <h1> <% @list.movies.each do | movie | %> </h1>
+      <%= movie.title %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <%= bookmark.comment %>
+      <% end %>

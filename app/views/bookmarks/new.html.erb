@@ -2,9 +2,10 @@
 <p>Find me in app/views/bookmarks/new.html.erb</p>
 
 
-<%= simple_form_for[@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%# <%= f.input :movie_id, collection: @bookmarks.movie.name %>
-  <%# <%= f.input :list_id, collection: @bookmarks.list.name %> %>
-  <%= f.submit %>
+<div class="container">
+<%= simple_form_for [@list, @bookmark] do |f| %>
+<%= f.association :movie, collection: Movie.order(:title), prompt: "Choose a Movie" %>
+<%= f.input :comment %>
+<%= f.submit class:"btn btn-gradient"%>
 <% end %>
+</div>
